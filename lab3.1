@@ -1,0 +1,52 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
+
+const NoteApp = () => {
+  const [inputText, setInputText] = useState('');
+  const [notes, setNotes] = useState([]);
+
+  const handleSaveNote = () => {
+    if (inputText !== '') {
+      setNotes([...notes, inputText]);
+      setInputText('');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={{ fontSize: 18 }}>สมุดบันทึก</Text>
+      <TextInput keyboardType='default'
+        style={styles.input}
+        placeholder="เพิ่มข้อความที่นี่"
+        value={inputText}
+        onChangeText={(text) => setInputText(text)}
+      />
+      <Button title="บันทึก" onPress={handleSaveNote} style={styles.button} />
+      <FlatList
+        data={notes}
+        renderItem={ ({item}) => { return <Text style={styles.noteText}>{item}</Text>} }
+        keyExtractor={(item) => item}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    justifyContent: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 8,
+    marginBottom: 8,
+  },
+  noteText: {
+    fontSize: 16,
+    marginBottom: 4,
+    textAlign: 'center'
+  },
+});
+
+export default NoteApp;
