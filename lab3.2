@@ -1,0 +1,64 @@
+import { StatusBar } from 'expo-status-bar';
+import {  StyleSheet, Text, View,Image, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
+
+export default function App() {
+  const picture = [{id:1,image:require('./assets/course-bach-it.jpg'),name:"Infomation Technology"},
+  {id:2,image:require('./assets/course-bach-dsba.jpg'),name:"Data Science and Business Analytics"},
+  {id:3,image:require('./assets/course-bach-bit.jpg'),name:"Business Information Technology (International Program)"},
+  {id:4,image:require('./assets/course-bach-ait.jpg'),name:"Artifical Intelligence Technology"}]
+  return (
+    <>
+      <View style={styles.container}>
+        <Image
+          style={styles.logo}
+          source={require('./assets/IT_Logo.png')}/>
+        <Text style={{fontSize:24}} >Programs</Text>
+      </View>
+      <SafeAreaView style={styles.container2}>
+        <FlatList
+        data={picture}
+        keyExtractor={(item)=>item.id}
+        renderItem={({item})=>{
+          return(
+            <View>
+            <Image style={styles.Image}
+          source={item.image}/>
+        <TouchableOpacity><Text style={styles.text}>{item.name}</Text></TouchableOpacity>
+          </View>
+          )
+        }}
+        />
+      </SafeAreaView>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding:10,
+    flexDirection:'row',
+    color:'blue',
+    backgroundColor: 'lightblue',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  container2: {
+    flex:1,
+    backgroundColor: 'lightgray',
+    paddingHorizontal:2,
+    gap:5,
+
+  },
+  logo:{
+    width:80,
+    height:80,
+  },
+  Image:{
+    width:'100%',
+  },
+  text:{
+    fontSize:20,
+    textAlign:'center',
+  }
+
+});
