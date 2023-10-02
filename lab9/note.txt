@@ -1,0 +1,7 @@
+npm install redux
+npm install react-redux
+npm install @react-navigation/native @react-navigation/stack
+npm install @react-navigation/native-stack
+npm install @react-navigation/bottom-tabs
+npm install @react-navigation/drawer
+npm install react-navigation-header-buttons
