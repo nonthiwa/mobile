@@ -5,3 +5,13 @@ npm install @react-navigation/native-stack
 npm install @react-navigation/bottom-tabs
 npm install @react-navigation/drawer
 npm install react-navigation-header-buttons
+npx expo install react-native-reanimated
+แล้วก็เข้า babel.config.js ไปใส่ module.exports = {
+    presets: [
+      ... // don't add it here :)
+    ],
+    plugins: [
+      ...
+      'react-native-reanimated/plugin', อันนี้ๆ
+    ],
+  };
